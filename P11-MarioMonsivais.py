@@ -22,13 +22,13 @@ ti = []
 wi = []
 thetai = []
 w = 0.0
-theta = 10*(np.pi/180.0)
+theta = 0.1
 t = 0
 Fd = 0.2
 wd = 2.0
 
 #Metodo de Euler
-while t < 20.0:
+while t < 50.0:
     ti.append(t)
     wi.append(w)
     thetai.append(theta)
@@ -37,7 +37,7 @@ while t < 20.0:
     theta = theta + w*delta
 
 #Graficacion
-plt.plot(ti, thetai, label="Ángulo de resonancia en \u03B8 = " + str(10.0) + "°")
+plt.plot(ti, thetai, label="Ángulo de resonancia en \u03B8 = " + str(0.1*180/np.pi) + "°")
 
 #Colocacion de leyendas y mostrar grafica
 plt.legend(loc="upper right")
