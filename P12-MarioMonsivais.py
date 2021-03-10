@@ -9,7 +9,7 @@ import numpy as np
 #Definicion grafica
 plt.title("Péndulo (Euler - Cromer)")
 plt.xlabel("t(s)")
-plt.ylabel("Theta(°)")
+plt.ylabel("Theta(radians)")
 plt.grid()
 
 
