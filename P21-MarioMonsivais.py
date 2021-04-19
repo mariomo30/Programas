@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+from scipy import stats
 
 #Mario Monsivais 29-03-2021
 #Instrucciones para correr:
@@ -23,10 +24,15 @@ for j in range(0, 100):
         x = x + dx[dr]
         r[i] += (x**2/100)
 
+res = stats.linregress(steps, r)
+
+plt.xlim(-10, 110)
+plt.ylim(-10, 110)
 plt.title("Caminata aleatoria en una dimensión")
-plt.xlabel("<$x^2$>")
-plt.ylabel("Número de pasos (Tiempo)")
+plt.ylabel("<$x^2$>")
+plt.xlabel("Número de pasos (Tiempo)")
 plt.plot(steps, r, label="<$x^2$> - Tiempo")
+plt.plot(steps, res.intercept + res.slope*steps, 'r', label="Ajuste")
 plt.grid()
 plt.legend()
 plt.show()
