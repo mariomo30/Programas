@@ -22,7 +22,7 @@ for j in range(0, 100):
     for i in range(0, 100):
         dr = random.randint(0, 1)
         x = x + dx[dr]
-        r[i] += (x**2/100)
+        r[i] += (((x/(j+1))**2)/100)
 
 res = stats.linregress(steps, r)
 
