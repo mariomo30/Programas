@@ -24,6 +24,11 @@ def ProcLCO(x, y):
 n1 = 1.0
 n2 = 1.5
 
+# Punto inicial
+Pi = (0, 0)
+# Punto final
+Pf = (2.0, 0.7)
+
 # x intermedias
 x = [0, 0.25, 0.50, 0.75, 1.0, 1.25, 1.50, 1.75, 2.0]
 
@@ -56,27 +61,36 @@ for i in range(k):
         LCON = ProcLCO(x, y) # claculo de la nueva LCOi
 
         # Verificar si es minimo este LCO nuevo
-        if LCON <= LCOI or abs(LCOI - LCON) <= delta:
+        if LCON < LCOI or abs(LCOI - LCON) <= delta:
             break
-    print(i)
+    print(((i+1)/10), "%")
 
 # Calculamos LCO para ver si se cumple la ley de Snell
-pm = () # Punto en l
+Pm = (x[4], y[4]) # Punto en la interfaz
+
+n1sent1 = n1*Pm[1]/dis(Pi, Pm)
+n2sent2 = n2*(Pf[1] - Pm[1])/dis(Pm, Pf)
+
+print("Para n1", n1sent1)
+print("Para n2", n2sent2)
 
 # Dibujando materiales
-plt.plot((0, 0), (0, 1), c='red')
+# N1
+plt.plot((0, 0), (0, 1), c='red', label="$n_1$ = 1.0")
 plt.plot((0, 1), (1, 1), c='red')
 plt.plot((1, 1), (0, 1), c='red')
 plt.plot((0, 1), (0, 0), c='red')
 
-plt.plot((1, 1), (0, 1), c='blue')
+# N2
+plt.plot((1, 1), (0, 1), c='blue', label = "$n_2$ = 1.5")
 plt.plot((1, 2), (1, 1), c='blue')
 plt.plot((2, 2), (0, 1), c='blue')
 plt.plot((1, 2), (0, 0), c='blue')
 
 # Resultado
-plt.title("Mínimo LCO calculado")
+plt.title("Mínimo LCO calculado,\n $n_1*sin(\\theta_1)=$" + str(n1sent1) + ", $n_2*sin(\\theta_2)=$" + str(n2sent2))
 plt.grid()
-plt.plot(x, y, c='black', label="LCO aproximado")
-plt.legend(loc='best')
+plt.plot(x, y, c = 'black', label = " LCO aproximado")
+plt.plot((Pi[0], Pm[0], Pf[0]), (Pi[1], Pm[1], Pf[1]), c = 'green', linestyle = "--", label = "LCO real")
+plt.legend(loc = 'best')
 plt.show()
