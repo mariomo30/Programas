@@ -8,7 +8,7 @@ v = 0
 t = 0
 ti = []
 vi = []
-ti2 = np.arange(0, 30.0, 0.05)
+ti2 = np.arange(0, 30.0, 0.01)
 
 while t < 30.0:
     v = v + (a - b*v)*delta
