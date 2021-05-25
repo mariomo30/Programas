@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import sqlite3
 
 a = 10.0
 b = 1.0
